@@ -49,6 +49,8 @@ def corrupt_mnist() -> tuple[torch.utils.data.Dataset, torch.utils.data.Dataset]
     test_set = torch.utils.data.TensorDataset(test_images, test_target)
     return train_set, test_set
 
+def main():
+    typer.run(preprocess_data)
 
 if __name__ == "__main__":
-    typer.run(preprocess_data)
+    main()

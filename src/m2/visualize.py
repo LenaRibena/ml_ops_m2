@@ -2,10 +2,10 @@ import os
 
 import matplotlib.pyplot as plt
 import torch
-from model import MyAwesomeModel
+from .model import MyAwesomeModel
 from sklearn.manifold import TSNE
 
-from data import corrupt_mnist
+from .data import corrupt_mnist
 
 
 def load_network(model_path: str) -> MyAwesomeModel:
@@ -55,8 +55,10 @@ def visualize_features(feature: torch.Tensor, save_path: str = "reports/figures"
     plt.close()
 
 
-if __name__ == "__main__":
-    print(os.getcwd())
+def main():
     model = load_network("models/cnn.pth")
     feature = extract_layer(model, "conv2")
     visualize_features(feature)
+
+if __name__ == "__main__":
+    main()

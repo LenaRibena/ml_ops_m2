@@ -1,15 +1,15 @@
 import matplotlib.pyplot as plt
 import torch
 import typer
-from model import MyAwesomeModel
+from .model import MyAwesomeModel
 
-from data import corrupt_mnist
+from .data import corrupt_mnist
 
 app = typer.Typer()
 
 
 @app.command()
-def train(lr: float = 1e-3, epochs: int = 10, batch_size: int = 64, model_path: str = "models/figures") -> None:
+def train(lr: float = 1e-3, epochs: int = 10, batch_size: int = 64, model_path: str = "models") -> None:
     """Train a model on MNIST."""
     print("Training day and night")
     print(lr)
@@ -58,6 +58,8 @@ def train(lr: float = 1e-3, epochs: int = 10, batch_size: int = 64, model_path: 
     axs[1].set_title("Train accuracy")
     fig.savefig("reports/training_statistics.png")
 
+def main():
+    app()
 
 if __name__ == "__main__":
-    app()
+    main()

@@ -7,6 +7,12 @@ PROJECT_NAME = "m2"
 PYTHON_VERSION = "3.11"
 
 
+@task
+def git(ctx, message):
+    ctx.run("git add .")
+    ctx.run(f'git commit -m "{message}"')
+    ctx.run("git push")
+
 # Setup commands
 @task
 def create_environment(ctx: Context) -> None:

@@ -31,3 +31,8 @@ lint.select = ["I"]
 
 [tool.coverage.run]
 omit = ["tests/*"]
+
+[project.scripts]
+train = "m2.train:main"
+visualize = "m2.visualize:main"
+type_ex = "m2.typer_exercise:main"
