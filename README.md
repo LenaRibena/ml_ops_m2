@@ -53,3 +53,12 @@ The directory structure of the project looks like this:
 Created using [mlops_template](https://github.com/SkafteNicki/mlops_template),
 a [cookiecutter template](https://github.com/cookiecutter/cookiecutter) for getting
 started with Machine Learning Operations (MLOps).
+
+## Project description
+
+All source code should be run from the terminal. 
+- data.py: loads and processes the mnist data
+- model.py: contains the cnn model and saves the final model in the models folder
+- train.py: trains the cnn model on the data, and saves a figure of the loss and accuracy across epochs to report/figures
+- evaluate.py: evaluates the model and prints the final accuracy
+- visualize.py: loads the model, extracts a convolution layer in plots it using tsne
