@@ -4,6 +4,7 @@ import torch
 import hydra
 import wandb
 
+from dotenv import load_dotenv
 from loguru import logger
 from omegaconf import OmegaConf
 from src.m2.model import MyAwesomeModel
@@ -11,7 +12,9 @@ from src.m2.data import corrupt_mnist
 
 import pdb
 
-wandb.login()
+load_dotenv()
+LOGIN_KEY = os.getenv("WANDB_API_KEY")
+wandb.login(key=LOGIN_KEY)
 
 PROJECT_PATH = os.path.dirname(__file__)
 CONFIG_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir, os.pardir, 'configs'))

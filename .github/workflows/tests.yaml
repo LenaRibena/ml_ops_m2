@@ -38,3 +38,5 @@ jobs:
         run: |
           coverage run -m pytest tests/
           coverage report -m
+        env:
+          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
