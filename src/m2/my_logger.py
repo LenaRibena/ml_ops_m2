@@ -1,7 +1,7 @@
+import math
 import sys
 
 from loguru import logger
-import math
 
 logger.remove()
 logger.add(sys.stdout, format="<green>{time}</green> <magenta>{level}</magenta> {message}", level="WARNING")
@@ -15,8 +15,10 @@ logger.critical("You have entered the critical region!")
 
 logger.opt(lazy=True).debug("If sink <= DEBUG: {x}", x=lambda: math.factorial(2**5))
 
+
 @logger.catch
 def dangerous_function():
     1 / 0
+
 
 dangerous_function()

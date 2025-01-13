@@ -13,6 +13,7 @@ def git(ctx, message):
     ctx.run(f'git commit -m "{message}"')
     ctx.run("git push origin main")
 
+
 # Setup commands
 @task
 def create_environment(ctx: Context) -> None:

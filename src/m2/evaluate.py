@@ -1,8 +1,8 @@
 import torch
 import typer
-from m2.model import MyAwesomeModel
 
 from m2.data import corrupt_mnist
+from m2.model import MyAwesomeModel
 
 app = typer.Typer()
 
@@ -36,8 +36,10 @@ def evaluate(model_checkpoint: str, batch_size: int = 64) -> None:
 
     print(f"Test accuracy: {correct / total}")
 
+
 def main():
     app()
+
 
 if __name__ == "__main__":
     main()

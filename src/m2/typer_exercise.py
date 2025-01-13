@@ -1,13 +1,13 @@
 import pickle
-import typer
-
 from typing import Annotated
+
+import typer
 from sklearn.datasets import load_breast_cancer
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
-from sklearn.neighbors import KNeighborsClassifier
 
 app = typer.Typer()
 train_app = typer.Typer()
@@ -33,28 +33,30 @@ def svm(kernel: str = "linear", output_file: Annotated[str, typer.Option("--outp
     # Train a Support Vector Machine (SVM) model
     model = SVC(kernel=kernel, random_state=42)
     model.fit(x_train, y_train)
-    
+
     # Save model to desired location provided by output
     with open(output_file, "wb") as f:
         pickle.dump(model, f)
+
 
 @train_app.command()
 def knn(k: int = 5, output_file: Annotated[str, typer.Option("--output", "-o")] = "model.ckpt") -> None:
     """Train and evaluate the model."""
     # Train a Support Vector Machine (SVM) model
-    model = KNeighborsClassifier(n_neighbors = k)
+    model = KNeighborsClassifier(n_neighbors=k)
     model.fit(x_train, y_train)
-    
+
     # Save model to desired location provided by output
     with open(output_file, "wb") as f:
         pickle.dump(model, f)
+
 
 @app.command()
 def evaluate(model_save_path: str) -> tuple[float, str]:
     # Load the model
     with open(model_save_path, "rb") as f:
         model = pickle.load(f)
-        
+
     # Make predictions on the test set
     y_pred = model.predict(x_test)
 
@@ -67,8 +69,10 @@ def evaluate(model_save_path: str) -> tuple[float, str]:
     print(report)
     return accuracy, report
 
+
 def main():
     app()
+
 
 if __name__ == "__main__":
     main()

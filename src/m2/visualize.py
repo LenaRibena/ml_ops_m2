@@ -2,9 +2,9 @@ import os
 
 import matplotlib.pyplot as plt
 import torch
-from m2.model import MyAwesomeModel
 from sklearn.manifold import TSNE
 
+from m2.model import MyAwesomeModel
 from src.m2.data import corrupt_mnist
 
 
@@ -59,6 +59,7 @@ def main():
     model = load_network(os.path.join("models", "cnn.pth"))
     feature = extract_layer(model, "conv2")
     visualize_features(feature)
+
 
 if __name__ == "__main__":
     main()

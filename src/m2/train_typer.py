@@ -1,10 +1,11 @@
-import matplotlib.pyplot as plt
 import os
+
+import matplotlib.pyplot as plt
 import torch
 import typer
 
-from m2.model import MyAwesomeModel
 from m2.data import corrupt_mnist
+from m2.model import MyAwesomeModel
 
 app = typer.Typer()
 
@@ -59,8 +60,10 @@ def train(lr: float = 1e-3, epochs: int = 10, batch_size: int = 64, model_path: 
     axs[1].set_title("Train accuracy")
     fig.savefig(os.path.join("reports", "training_statistics.png"))
 
+
 def main():
     app()
+
 
 if __name__ == "__main__":
     main()
