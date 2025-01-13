@@ -47,9 +47,7 @@ def preprocess_data(raw_dir: str, processed_dir: str) -> None:
 
 def corrupt_mnist(data_path: str = os.path.join("data", "processed")) -> tuple[torch.utils.data.Dataset, torch.utils.data.Dataset]:
     """Return train and test datasets for corrupt MNIST."""
-    if not os.path.exists(data_path):
-        raise FileNotFoundError("Processed data not found.")
-    
+
     train_images = torch.load(os.path.join(data_path, "train_images.pt"))
     train_target = torch.load(os.path.join(data_path, "train_target.pt"))
     test_images = torch.load(os.path.join(data_path, "test_images.pt"))
