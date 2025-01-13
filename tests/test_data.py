@@ -6,7 +6,7 @@ from torch.utils.data import Dataset
 from src.m2.data import corrupt_mnist
 
 @pytest.mark.skipif(not os.path.exists(os.path.join("data", "processed")), reason="No processed data found.")
-def test_my_dataset():
+def test_my_dataset() -> None:
     """Test the MyDataset class."""
     train_set, test_set = corrupt_mnist(os.path.join("data", "processed"))
     
