@@ -41,7 +41,7 @@ def extract_layer(model: MyAwesomeModel, layer_name: str) -> torch.Tensor:
     return activation[layer_name]
 
 
-def visualize_features(feature: torch.Tensor, save_path: str = "reports/figures") -> None:
+def visualize_features(feature: torch.Tensor, save_path: str = os.path.join("reports", "figures")) -> None:
     """Visualize the features (from extract_layer) using t-SNE."""
 
     # Reshape feature to comply with t-SNE requirements
@@ -56,7 +56,7 @@ def visualize_features(feature: torch.Tensor, save_path: str = "reports/figures"
 
 
 def main():
-    model = load_network("models/cnn.pth")
+    model = load_network(os.path.join("models", "cnn.pth"))
     feature = extract_layer(model, "conv2")
     visualize_features(feature)
 

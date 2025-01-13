@@ -14,7 +14,7 @@ import pdb
 wandb.login()
 
 PROJECT_PATH = os.path.dirname(__file__)
-CONFIG_PATH = os.path.abspath(os.path.join(PROJECT_PATH, '../../configs'))
+CONFIG_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir, os.pardir, 'configs'))
 
 # NOTE: The config path should be relative to the root of the directory
 # It is not here, and should ideally just be "configs"
@@ -25,16 +25,16 @@ def train(cfg) -> None:
     HYDRA_PATH = os.getcwd() # Hydra hijacks the cwd
     
     logger.remove()
-    logger.add(f"{HYDRA_PATH}/my_log.log", level="DEBUG", rotation="100 MB")
+    logger.add(os.path.join(HYDRA_PATH, "my_log.log"), level="DEBUG", rotation="100 MB")
     logger.info(cfg)
     
     logger.debug("Training day and night")
     train_params = cfg.train
     path_params = cfg.paths
     
-    DATA_PATH = os.path.abspath(os.path.join(PROJECT_PATH, path_params['data']))
-    MODEL_PATH = os.path.abspath(os.path.join(PROJECT_PATH, path_params['model']))
-    FIGURE_PATH = os.path.abspath(os.path.join(PROJECT_PATH, path_params['figures']))
+    DATA_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir, os.pardir, path_params['data']))
+    MODEL_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir, os.pardir, path_params['model']))
+    FIGURE_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir, os.pardir, path_params['figures']))
 
     run = wandb.init(entity="lenaribena-technical-university-of-denmark",
                      project="mnist", 
@@ -77,14 +77,14 @@ def train(cfg) -> None:
     logger.debug("Training complete")
 
     # Save the model and training statistics
-    torch.save(model.state_dict(), f"{MODEL_PATH}/cnn.pth")
-    wandb.save(f"{MODEL_PATH}/cnn.pth")
+    torch.save(model.state_dict(), os.path.join(MODEL_PATH, "cnn.pth"))
+    wandb.save(os.path.join(MODEL_PATH, "cnn.pth"))
     fig, axs = plt.subplots(1, 2, figsize=(15, 5))
     axs[0].plot(statistics["train_loss"], alpha=0.5)
     axs[0].set_title("Train loss")
     axs[1].plot(statistics["train_accuracy"], alpha=0.5)
     axs[1].set_title("Train accuracy")
-    fig.savefig(f"{FIGURE_PATH}/training_statistics.png")
+    fig.savefig(os.path.join(FIGURE_PATH, "training_statistics.png"))
     wandb.log({"plot": wandb.Image(fig)})
     
     return statistics

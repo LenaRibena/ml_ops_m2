@@ -1,8 +1,0 @@
-train:
-  lr: 0.001
-  epochs: 10
-  batch_size: 64
-paths:
-  data: ../../data/processed
-  figures: ../../reports
-  model: ../../models

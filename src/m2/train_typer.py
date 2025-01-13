@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
+import os
 import torch
 import typer
+
 from m2.model import MyAwesomeModel
 from m2.data import corrupt_mnist
 
@@ -55,7 +57,7 @@ def train(lr: float = 1e-3, epochs: int = 10, batch_size: int = 64, model_path: 
     axs[0].set_title("Train loss")
     axs[1].plot(statistics["train_accuracy"], alpha=0.5)
     axs[1].set_title("Train accuracy")
-    fig.savefig("reports/training_statistics.png")
+    fig.savefig(os.path.join("reports", "training_statistics.png"))
 
 def main():
     app()

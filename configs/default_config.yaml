@@ -4,6 +4,6 @@ defaults:
   - train:
 
 paths:
-  data: "../../data/processed"
-  figures: "../../reports"
-  model: "../../models"
+  data: "data/processed"
+  figures: "reports"
+  model: "models"

@@ -4,9 +4,9 @@ import pytest
 from hydra import initialize, compose
 from m2.train import train
 
-@pytest.mark.skipif(not os.path.exists("data/processed"), reason="No processed data found.")
+@pytest.mark.skipif(not os.path.exists(os.path.join("data", "processed")), reason="No processed data found.")
 def test_train():
-    with initialize(config_path="../configs", job_name="test_app"):
+    with initialize(config_path=os.path.join(os.path.pardir, "configs"), job_name="test_app"):
         cfg = compose(config_name="default_config", overrides=["train=hpar1"])
         stats = train(cfg)
         
