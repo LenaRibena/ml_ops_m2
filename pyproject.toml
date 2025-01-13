@@ -30,7 +30,11 @@ line-length = 120
 lint.select = ["I"]
 
 [tool.coverage.run]
-omit = ["tests/*"]
+omit = [
+      "tests/*",
+      "config.py",
+      "config-3.py"
+      ]
 
 [project.scripts]
 train = "m2.train:main"

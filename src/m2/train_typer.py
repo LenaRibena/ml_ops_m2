@@ -3,8 +3,8 @@ import os
 import torch
 import typer
 
-from src.m2.model import MyAwesomeModel
-from src.m2.data import corrupt_mnist
+from m2.model import MyAwesomeModel
+from m2.data import corrupt_mnist
 
 app = typer.Typer()
 

@@ -3,7 +3,7 @@ import pytest
 
 from torch.utils.data import Dataset
 
-from src.m2.data import corrupt_mnist
+from m2.data import corrupt_mnist
 
 @pytest.mark.skipif(not os.path.exists(os.path.join("data", "processed")), reason="No processed data found.")
 def test_my_dataset() -> None:

@@ -2,7 +2,7 @@ import os
 
 import matplotlib.pyplot as plt
 import torch
-from src.m2.model import MyAwesomeModel
+from m2.model import MyAwesomeModel
 from sklearn.manifold import TSNE
 
 from src.m2.data import corrupt_mnist

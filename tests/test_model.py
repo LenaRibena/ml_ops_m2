@@ -2,7 +2,7 @@ import pytest
 import re
 import torch
 
-from src.m2.model import MyAwesomeModel
+from m2.model import MyAwesomeModel
 
 def test_my_model():
     # Test the model output shape
