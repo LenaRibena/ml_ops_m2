@@ -35,6 +35,7 @@ omit = [
       "config.py",
       "config-3.py"
       ]
+      source = ["src"]
 
 [project.scripts]
 train = "m2.train:main"
