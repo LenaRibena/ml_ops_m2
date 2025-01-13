@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from .data import corrupt_mnist
+from m2.data import corrupt_mnist
 
 
 class MyAwesomeModel(nn.Module):
@@ -21,6 +21,12 @@ class MyAwesomeModel(nn.Module):
         self.logsoft = nn.LogSoftmax(dim=1)
 
     def forward(self, x):
+        
+        if x.ndim != 4:
+            raise ValueError("Input tensor must have 4 dimensions.")
+        if x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
+            raise ValueError("Input tensor must have shape (batch_size, 1, 28, 28).")
+        
         x = self.dropout(self.activation(self.conv1(x)))
         x = self.maxpool(x)
         x = self.dropout(self.activation(self.conv2(x)))

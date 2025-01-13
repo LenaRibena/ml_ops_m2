@@ -1,0 +1,9 @@
+defaults:
+  - data:
+  - model:
+  - train:
+
+paths:
+  data: "../../data/processed"
+  figures: "../../reports"
+  model: "../../models"

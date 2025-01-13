@@ -62,3 +62,8 @@ All source code should be run from the terminal.
 - train.py: trains the cnn model on the data, and saves a figure of the loss and accuracy across epochs to report/figures
 - evaluate.py: evaluates the model and prints the final accuracy
 - visualize.py: loads the model, extracts a convolution layer in plots it using tsne
+
+## Excess files
+
+- train/evalue.dockerfile are exercise files to test out how to create a docker image. From these exercises, the docker_model.pth was created to test out how to copy data from the docker machine to the local machine
+- greetings.py is an exercise file on how to use the typer module

@@ -1,8 +1,8 @@
 import torch
 import typer
-from .model import MyAwesomeModel
+from m2.model import MyAwesomeModel
 
-from .data import corrupt_mnist
+from m2.data import corrupt_mnist
 
 app = typer.Typer()
 
