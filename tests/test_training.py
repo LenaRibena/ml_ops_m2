@@ -4,6 +4,8 @@ import pytest
 from hydra import initialize, compose
 from m2.train import train
 
+import pdb
+
 @pytest.mark.skipif(not os.path.exists(os.path.join("data", "processed")), reason="No processed data found.")
 def test_train():
     with initialize(config_path=os.path.join(os.path.pardir, "configs"), job_name="test_app"):
