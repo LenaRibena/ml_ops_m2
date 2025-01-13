@@ -6,8 +6,8 @@ import wandb
 
 from loguru import logger
 from omegaconf import OmegaConf
-from m2.model import MyAwesomeModel
-from m2.data import corrupt_mnist
+from src.m2.model import MyAwesomeModel
+from src.m2.data import corrupt_mnist
 
 import pdb
 

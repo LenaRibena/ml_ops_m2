@@ -6,3 +6,4 @@ scikit-learn==1.5.2
 matplotlib==3.10.0
 coverage==7.6.10
 pytest==8.3.4
+hydra==1.3.2

@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from m2.data import corrupt_mnist
+from src.m2.data import corrupt_mnist
 
 
 class MyAwesomeModel(nn.Module):
