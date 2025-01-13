@@ -4,3 +4,4 @@ fastapi==0.115.6
 uvicorn==0.34.0
 scikit-learn==1.5.2
 matplotlib==3.10.0
+coverage==7.6.10
