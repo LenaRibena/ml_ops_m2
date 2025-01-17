@@ -1,9 +1,10 @@
-import torch
-
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, UploadFile, File
-from transformers import VisionEncoderDecoderModel, ViTFeatureExtractor, AutoTokenizer
+
+import torch
+from fastapi import FastAPI, File, UploadFile
 from PIL import Image
+from transformers import AutoTokenizer, VisionEncoderDecoderModel, ViTFeatureExtractor
+
 
 def predict_step(image_paths: list[str]):
     images = []

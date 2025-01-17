@@ -1,13 +1,13 @@
 import re
-
-import cv2
-
 from contextlib import asynccontextmanager
 from enum import Enum
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from http import HTTPStatus
+
+import cv2
+from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
-from http import HTTPStatus
+
 
 class ItemEnum(Enum):
     alexnet = "alexnet"

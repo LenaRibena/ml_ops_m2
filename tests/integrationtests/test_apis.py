@@ -1,5 +1,7 @@
 from fastapi.testclient import TestClient
+
 from m2.api import app
+
 
 def test_read_root():
     with TestClient(app) as client:
