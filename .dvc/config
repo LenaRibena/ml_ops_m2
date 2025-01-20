@@ -1,0 +1,4 @@
+[core]
+    remote = mlops-remote-data
+['remote "mlops-remote-data"']
+    url = gs://ml-ops-bucket-test/

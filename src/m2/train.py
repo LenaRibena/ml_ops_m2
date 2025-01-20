@@ -17,12 +17,12 @@ LOGIN_KEY = os.getenv("WANDB_API_KEY")
 wandb.login(key=LOGIN_KEY)
 
 # PROJECT_PATH = os.path.dirname(__file__)
-# CONFIG_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir, os.pardir, 'configs'))
+CONFIG_PATH = os.path.join(os.pardir, os.pardir, 'configs')
 
 
 # NOTE: The config path should be relative to the root of the directory
 # It is not here, and should ideally just be "configs"
-@hydra.main(config_path="configs", config_name="default_config")
+@hydra.main(config_path=CONFIG_PATH, config_name="default_config")
 def train(cfg) -> None:
     """Train a model on MNIST."""
     # hydra_path = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
