@@ -16,13 +16,13 @@ def preprocess_data(raw_dir: str, processed_dir: str) -> None:
     train_images, train_target = [], []
     for i in range(6):
         train_path = os.path.join(raw_dir, f"train_images_{i}.pt")
-        test_path = os.path.join(raw_dir, f"test_images_{i}.pt")
+        target_path = os.path.join(raw_dir, f"train_target_{i}.pt")
 
-        if not os.path.exists(train_path) or not os.path.exists(test_path):
+        if not os.path.exists(train_path):
             raise FileNotFoundError("Raw data not found.")
 
         train_images.append(torch.load(train_path))
-        train_target.append(torch.load(test_path))
+        train_target.append(torch.load(target_path))
     train_images = torch.cat(train_images)
     train_target = torch.cat(train_target)
 
