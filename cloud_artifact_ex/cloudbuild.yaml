@@ -5,7 +5,7 @@ steps:
     'build',
     '.',
     '-t',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/docker-image',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/$_IMAGE_NAME',
     '-f',
     'cloud_artifact_ex/Dockerfile'
   ]
@@ -13,7 +13,9 @@ steps:
   id: 'Push container image'
   args: [
     'push',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/docker-image'
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/$_IMAGE_NAME'
   ]
 options:
   logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _IMAGE_NAME: 'docker-image'

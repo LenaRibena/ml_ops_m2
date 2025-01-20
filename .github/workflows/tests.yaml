@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Unit Tests and Build
 
 on:
   push:
@@ -10,6 +10,7 @@ on:
 
 jobs:
   test:
+    name: Unit Tests
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
@@ -41,3 +42,24 @@ jobs:
           coverage report -m --ignore-errors
         env:
           WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+
+  build:
+    needs: test
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate with GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials: ${{ secrets.GCLOUD_SERVICE_KEY }}
+      
+      - name: Set up Gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Submit build
+        run: gcloud builds submit cloud_artifact_ex/cloudbuild_containers.yaml .
