@@ -3,6 +3,8 @@ docs/site/
 # test cache
 manual_test/
 
+.ruff_cache/
+
 # wandb
 wandb/
 wandb/latest-run

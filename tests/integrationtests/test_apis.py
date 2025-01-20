@@ -163,7 +163,7 @@ def test_cv_model():
             assert response.json()["message"] == "OK", "Wrong response message for valid image upload"
 
         # Invalid image upload
-        with open("perleplade.py", "rb") as img:
+        with open("tasks.py", "rb") as img:
             response = client.post("/cv_model/", files={"data": img})
             assert response.status_code == 500, "Wrong status code for invalid image upload"
             assert response.json()["detail"] == 'Image processing error: 400: Invalid image', "Wrong response detail for invalid image upload"
