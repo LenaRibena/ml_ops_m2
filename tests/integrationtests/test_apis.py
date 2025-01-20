@@ -1,3 +1,5 @@
+import os
+
 from fastapi.testclient import TestClient
 
 from m2.api import app
@@ -155,7 +157,7 @@ def test_contains_email_domain():
 def test_cv_model():
     with TestClient(app) as client:
         # Valid image upload
-        with open("../md.jpeg", "rb") as img:
+        with open(os.path.join(os.pardir, os.pardir, "resized_image.jpg"), "rb") as img:
             response = client.post("/cv_model/", files={"data": img})
             assert response.status_code == 200, "Wrong status code for valid image upload"
             assert response.json()["message"] == "OK", "Wrong response message for valid image upload"
