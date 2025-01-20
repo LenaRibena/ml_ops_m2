@@ -157,13 +157,13 @@ def test_contains_email_domain():
 def test_cv_model():
     with TestClient(app) as client:
         # Valid image upload
-        with open(os.path.join(os.pardir, os.pardir, "resized_image.jpg"), "rb") as img:
+        with open("resized_image.jpg", "rb") as img:
             response = client.post("/cv_model/", files={"data": img})
             assert response.status_code == 200, "Wrong status code for valid image upload"
             assert response.json()["message"] == "OK", "Wrong response message for valid image upload"
 
         # Invalid image upload
-        with open("../perleplade.py", "rb") as img:
+        with open("perleplade.py", "rb") as img:
             response = client.post("/cv_model/", files={"data": img})
             assert response.status_code == 500, "Wrong status code for invalid image upload"
             assert response.json()["detail"] == 'Image processing error: 400: Invalid image', "Wrong response detail for invalid image upload"
@@ -181,3 +181,7 @@ def test_cv_model():
                     }
                 ]
             }, "Wrong response for missing file"
+        
+if __name__ == "__main__":
+    import pdb
+    pdb.set_trace()
