@@ -61,5 +61,5 @@ jobs:
       - name: Set up Gcloud
         uses: google-github-actions/setup-gcloud@v2
 
-      - name: Submit build
+      - name: Submit the build
         run: gcloud builds submit --config cloud_artifact_ex/cloudbuild.yaml
