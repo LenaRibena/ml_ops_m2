@@ -5,15 +5,15 @@ steps:
     'build',
     '.',
     '-t',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/${_REGISTRY_NAME}/${_IMAGE_NAME}',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/docker-image',
     '-f',
-    '${_DOCKERFILE_PATH}'
+    'cloud_artifact_ex/Dockerfile'
   ]
 - name: 'gcr.io/cloud-builders/docker'
   id: 'Push container image'
   args: [
     'push',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/${_REGISTRY_NAME}/${_IMAGE_NAME}'
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/docker-image'
   ]
 options:
   logging: CLOUD_LOGGING_ONLY
